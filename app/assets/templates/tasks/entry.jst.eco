@@ -1,0 +1,16 @@
+
+<div class="toggles">
+  <button class="btn toggle-completed">
+  
+  <% if @task.get('is_completed'): %>
+    <i class="icon-ok"></i>
+  <% else: %>
+    <i class="icon-"></i>
+  <% end %>
+  </button>
+</div>
+<div class="description">
+  <%= @task.get('description') %>
+</div>
+<a class="close">&times;</a>
+

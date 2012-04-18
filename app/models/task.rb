@@ -1,0 +1,28 @@
+class Task < ActiveRecord::Base
+  belongs_to :user
+  
+  belongs_to :assignment
+  
+  validates :description, :presence => true
+  
+  attr_accessor :is_completed
+  
+  def is_completed
+    self.completed_at != nil
+  end
+  
+  def is_completed= value
+    if value
+      self.completed_at = Time.now
+    else
+      self.completed_at = nil
+    end
+  end
+  
+  def as_json options={}
+    super(options).merge({
+      :is_completed => self.is_completed,
+      :due_at => if self.due_at then self.due_at.to_date.iso8601 else nil end
+    })
+  end
+end

@@ -1,0 +1,13 @@
+defaults: &defaults
+    
+  facebook:
+    app_id: 178013625581489
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

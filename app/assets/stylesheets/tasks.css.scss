@@ -1,0 +1,61 @@
+ul#tasks {
+  list-style: none;
+  
+  border: 1px solid #DDD;
+  border-left: 0;
+  border-radius: 4px;
+  margin: 0;
+  
+  li.entry:nth-child(odd) {
+    background-color: #F9F9F9;
+  }
+  li.entry {
+    padding: 8px;
+    line-height: 30px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #DDD;
+    position: relative;
+    
+    border-left: 1px solid #DDD;
+    
+    .toggles {
+      float: left;
+      width: 70px;
+      height: 30px;
+    }
+    .description {
+      margin-left: 70px;
+      height: 30px;
+    }
+    .close {
+      display: none;
+      position: absolute;
+      top: 0px;
+      right: 5px;
+    }
+  }
+  
+  li.entry:hover {
+    .close {
+      display: block;
+    }
+  }
+  
+  li.entry.completed {
+    color: #ccc;
+    .description {
+      text-decoration: line-through;
+    }
+  }
+
+  
+
+}
+
+
+#sidebar {
+  .description {
+    min-height: 30px;
+  }
+}

@@ -1,0 +1,48 @@
+<form class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label">
+      <div class="toggles">
+        <button class="btn toggle-completed">&nbsp;</button>
+      </div>
+    </label>
+    <div class="controls"> 
+      <div class="description">
+        <div class="description-text"><%= @task.get('description') %></div>
+        <textarea name="description" class="description-textarea input-xlarge" style="display:none"><%= @task.get('description') %></textarea>
+      </div>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <label class="control-label">Involved</label>
+    <div class="controls">
+      <select data-placeholder="Choose someone..." class="friend-select" multiple>
+        <option value=""></option>
+        <% current_user.get("friends").each (friend) ->: %>
+        <option value="<%= friend.get("id") %>"><%= friend.get("name") %></option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <label class="control-label">When</label>
+    <div class="controls">
+      <div class="input-append">
+        <span class="date-text" title="<%= @task.get('due_at') %>"></span>
+        <a class="btn btn-small date-input" data-date-format="yyyy-mm-dd" data-date="<%= @task.get('due_at') %>"><i class="icon icon-time"></i></a>
+      </div>     
+    </div>
+  </div>
+
+</form>
+
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#home">Activity</a></li>
+  <li><a href="#profile">People</a></li>
+</ul>
+ 
+<div class="tab-content">
+  <div class="tab-pane active" id="activity">...</div>
+  <div class="tab-pane" id="people">...</div>
+</div>

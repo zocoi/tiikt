@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+  <meta charset="utf-8">
+
+  <%- # Always force latest IE rendering engine (even in intranet) & Chrome Frame -%>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <%= display_meta_tags :reverse => true, :site => 'Zocoi - Ready To Read',
+  :description => 'Tiikt is .', 
+  :keywords => 'comics, book sharing, online comics, manga, online manga, graphical book, social network, free book, free comics, comics network'
+   %>
+  <meta property="fb:app_id" content="<%= APP_CONFIG['facebook']['app_id'] %>">
+
+  <%- # Mobile viewport optimized: j.mp/bplateviewport -%>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <%- # Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -%>
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <%- # CSS : implied media="all" -%>
+  <%= stylesheet_link_tag 'http://bootswatch.com/simplex/bootstrap.min.css' %>
+  <%= stylesheet_link_tag 'http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css' %>
+  <%= stylesheet_link_tag 'http://www.eyecon.ro/bootstrap-datepicker/css/datepicker.css' %>
+  <%= stylesheet_link_tag 'http://harvesthq.github.com/chosen/chosen/chosen.css' %>
+
+
+  <link href='http://fonts.googleapis.com/css?family=Terminal+Dosis:400,800' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag 'application' %>
+ 
+  <%= csrf_meta_tag %>
+  
+  <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' %>
+  <%= javascript_include_tag 'http://www.eyecon.ro/bootstrap-datepicker/js/bootstrap-datepicker.js' %>
+  <%= javascript_include_tag 'http://harvesthq.github.com/chosen/chosen/chosen.jquery.js' %>
+  <%= javascript_include_tag 'http://timeago.yarp.com/jquery.timeago.js' %>
+  <%= javascript_include_tag 'http://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js' %>
+  <%= javascript_include_tag 'http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js' %>
+  <%= javascript_include_tag 'http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js' %>
+  <%= javascript_include_tag 'http://twitter.github.com/bootstrap/assets/js/bootstrap-tooltip.js' %>
+  <%= javascript_include_tag 'http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js' %>
+  <%= javascript_include_tag 'http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js' %>
+  <%= javascript_include_tag 'application' %>
+  <% if user_signed_in? %>
+  <script type="text/javascript" charset="utf-8">
+    $.timeago.settings.allowFuture = true;
+    window.current_user = new Tiikt.Models.User(<%= current_user.to_json(:only => [:id, :fb_uid, :email, :name], 
+      :include => { :friends => { :only => [:id, :fb_uid, :email, :name] } }).html_safe %>);
+    $(function() {
+      Tiikt.init()
+    })
+  </script>
+  <% end %>
+</head>
+<body>
+  
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <%= link_to "Tiikt", root_path, :class => "brand", :id => "logo" %>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <% unless user_signed_in? %>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <li><%= link_to "Sign in", new_user_session_path %></li>
+            <li><%= link_to content_tag(:i, nil, :class => "icon-facebook-sign icon-white") + "Connect with Facebook", user_omniauth_authorize_path(:facebook) %></li>
+            <% end %>
+          </ul>
+          <%# form_tag(search_books_path, {:class => "navbar-search pull-left"}) do %>
+            <input type="text" placeholder="Search" name="keyword" id="search" class="span-2 search-query">
+          <%# end %>
+          <% if user_signed_in? %>
+          <ul class="nav pull-right">
+            <li class="divider-vertical"></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <%= image_tag(current_user.avatar_url, :title => current_user.name, :class => "avatar small") %>
+                <%= current_user.name %>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%# link_to "My Profile", user_path(current_user), :class => 'button account' %></li>
+                <li><%= link_to "My Shelf", root_path, :class => 'button shelf' %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Logout", destroy_user_session_path, :class => 'button logout', :method => :delete %></li>
+              </ul>
+            </li>
+          </ul>
+          <% end %>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <%- flash.each do |type, message| -%>
+      <div class="alert alert-<%= type %>">
+        <a class="close" data-dismiss="alert">×</a>
+        <%= message %>
+      </div>
+      <%- end -%>
+    </div>
+  </div>
+  
+  <div class="container-fluid">
+    <div id="main-container">
+      <%= yield %>
+    </div>
+    
+    <footer class="footer">
+      <br class="clear" />
+      <p class="pull-right">
+        All community content is either public domain, creative commons or property of its respective owner.
+        <br/>
+        Question? Check out the <a href="https://github.com/zocoi/zocoi/wiki/FAQ" target="_blank">FAQ</a>
+      </p>
+      <p>
+        Designed and built with love by <a href="http://twitter.com/zocoi" target="_blank">@zocoi</a>
+      </p>
+    </footer>
+  </div>
+
+  <%- # Javascript at the bottom for fast page loading -%>
+  <%- # Facebook Javascript SDK -%>
+  <div id="fb-root"></div>
+  <script src="http://connect.facebook.net/en_US/all.js"></script>
+  <script>
+  if(typeof FB != 'undefined')
+  {
+    FB.init({
+      appId  : '178013625581489',
+      status : true, // check login status
+      cookie : true, // enable cookies to allow the server to access the session
+      xfbml  : true  // parse XFBML
+    });
+  }
+
+  </script>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-25437680-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</body>
+</html>

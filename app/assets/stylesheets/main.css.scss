@@ -1,0 +1,13 @@
+.navbar {
+  .navbar-inner {
+    border-radius: 0;
+    
+    .dropdown-toggle {
+      .avatar.small { 
+        width: 20px; height: 20px; vertical-align:-7px;
+        margin-right: 5px;
+      }
+      
+    }
+  }
+}
