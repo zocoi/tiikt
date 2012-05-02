@@ -1,4 +1,4 @@
-class Tiikt.Views.Entry extends Backbone.View
+class Tiikt.Views.TasksEntry extends Backbone.View
   template: JST['tasks/entry']
   tagName: 'li'
   className: 'entry'
@@ -27,7 +27,7 @@ class Tiikt.Views.Entry extends Backbone.View
     @$el.addClass("selected")
     unless @model.sidebar_view?
       console.log "new"
-      sidebar_view = new Tiikt.Views.Sidebar(model: @model)
+      sidebar_view = new Tiikt.Views.TasksSidebar(model: @model)
       @model.sidebar_view = sidebar_view
     console.log @model.sidebar_view.render()
     $('#sidebar').html(@model.sidebar_view.render().el)

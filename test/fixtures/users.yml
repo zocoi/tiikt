@@ -4,8 +4,8 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+tester:
+  name: "Tester"
+  email: "tester@tester.com"
+  fb_uid: "560224923"
+  fb_access_token: "AAAAALG4w3e8BAJZBZB1LGLYrylZB0wslqls3LkA0vjT4Gfkq3PRukifTMYpidgJskHtqZAXucg8lh5kKrqg3YJZCxWcL8QjsZD"

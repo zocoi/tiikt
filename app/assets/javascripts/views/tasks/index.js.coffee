@@ -20,8 +20,8 @@ class Tiikt.Views.TasksIndex extends Backbone.View
     @render_task(task)
     
   render_task: (task) ->
-    view = new Tiikt.Views.Entry(model: task)
-    @$('#tasks').prepend(view.render().el)
+    entry_view = new Tiikt.Views.TasksEntry(model: task)
+    @$('#tasks').prepend(entry_view.render().el)
     
   # DOM events
   formSubmitted: (event) ->

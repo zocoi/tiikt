@@ -1,4 +1,4 @@
-class Tiikt.Views.Sidebar extends Backbone.View
+class Tiikt.Views.TasksSidebar extends Backbone.View
   template: JST['tasks/sidebar']
   
   className: "well sidebar-nav"
@@ -22,9 +22,12 @@ class Tiikt.Views.Sidebar extends Backbone.View
     console.log @$(".friend-select")
     _.defer =>
       @$(".friend-select").chosen()
-    this
-    
-  
+
+	# Render events
+	events_view = new Tiikt.Views.EventsIndex(model: events)
+    @$('#activity').prepend(comments_view.render().el)
+
+    this  
     
   # DOM events
   descriptionTextClicked: ->

@@ -1,0 +1,15 @@
+.bubble {
+  margin: 50px;
+  padding: 50px;
+  position: relative;
+}
+.bubble:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 20px;
+  border-top: 20px solid blue;
+  border-top-color: inherit; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent; 
+}​

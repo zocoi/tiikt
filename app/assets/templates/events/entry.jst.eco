@@ -1,0 +1,14 @@
+
+<div class="speech-bubble" style="background: pink;">
+  <div class="avatar">
+
+  </div>
+  <div class="description">
+    <%= @task.get('description') %>
+  </div>
+  <% if(true): %>
+  <a class="close">&times;</a>
+  <% end %>
+</div>
+
+
