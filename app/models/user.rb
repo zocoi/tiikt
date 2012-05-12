@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :friendships, :dependent => :destroy
   has_many :friends, :through => :friendships, :source => :friend, :class_name => 'User'
   
+  has_many :events
+  
   def avatar_url
     if self.fb_uid
       self.facebook_avatar_url
