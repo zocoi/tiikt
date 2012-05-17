@@ -20,7 +20,6 @@ class Tiikt.Views.TasksEntry extends Backbone.View
   
   # DOM events
   entryClicked: ->
-    console.log "entryClicked"
     if @$el.hasClass("selected")
       return
     $(".entry").removeClass("selected")
@@ -33,7 +32,6 @@ class Tiikt.Views.TasksEntry extends Backbone.View
     $('#sidebar').html(@model.sidebar_view.render().el)
     
   toggleCompletedClicked: (e) ->
-    console.log "toggleCompleted"
     @model.set("is_completed",  !@model.get("is_completed") )
     @model.save()
     @model.collection.sort()

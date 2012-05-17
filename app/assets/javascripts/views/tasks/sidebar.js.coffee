@@ -25,7 +25,7 @@ class Tiikt.Views.TasksSidebar extends Backbone.View
 
     # Render events
     events_view = new Tiikt.Views.EventsIndex(collection: @model.events)
-    @$('#activity').prepend(comments_view.render().el)
+    @$('#activity').prepend(events_view .render().el)
 
     this  
     
