@@ -23,9 +23,9 @@ class Tiikt.Views.TasksSidebar extends Backbone.View
     _.defer =>
       @$(".friend-select").chosen()
 
-	# # Render events
-	# events_view = new Tiikt.Views.EventsIndex(model: events)
-	# @$('#activity').prepend(comments_view.render().el)
+    # Render events
+    events_view = new Tiikt.Views.EventsIndex(collection: @model.events)
+    @$('#activity').prepend(comments_view.render().el)
 
     this  
     
