@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120414094635) do
+ActiveRecord::Schema.define(:version => 20120503071142) do
 
   create_table "assignments", :force => true do |t|
     t.integer "task_id"
@@ -45,6 +45,17 @@ ActiveRecord::Schema.define(:version => 20120414094635) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "events", :force => true do |t|
+    t.integer  "task_id",    :null => false
+    t.integer  "user_id",    :null => false
+    t.text     "body",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "events", ["task_id"], :name => "index_events_on_task_id"
+  add_index "events", ["user_id"], :name => "index_events_on_user_id"
 
   create_table "friendships", :force => true do |t|
     t.integer "user_id"
