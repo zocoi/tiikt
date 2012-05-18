@@ -14,7 +14,7 @@ class Tiikt.Views.TasksIndex extends Backbone.View
   render: =>
     $(@el).html(@template())
     @collection.each(@render_task)
-    super
+    this
   
   task_added: (task) ->
     @render_task(task)

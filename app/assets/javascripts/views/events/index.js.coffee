@@ -11,7 +11,7 @@ class Tiikt.Views.EventsIndex extends Backbone.View
   render: ->
     $(@el).html(@template())
    	@collection.each(@render_event)
-    super
+    this
   
   event_added: (event) ->
     @render_event(event)
