@@ -3,6 +3,7 @@ class Task < ActiveRecord::Base
   belongs_to :assignment
   
   has_many :events
+  has_many :comment_events
   
   validates :description, :presence => true
   

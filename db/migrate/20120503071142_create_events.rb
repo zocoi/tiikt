@@ -3,7 +3,8 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.integer :task_id, :null => false
       t.integer :user_id, :null => false
-      t.text :body, :null => false
+      t.string  :type,    :null => false
+      t.text :body
       t.timestamps
     end
     

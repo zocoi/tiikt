@@ -11,22 +11,22 @@ class Tiikt.Views.TasksSidebar extends Backbone.View
   initialize: ->
     @model.on("change:description", @render, @)
     @model.on("change:due_at", @render, @)
-    console.log "initialize", @model
+    # console.log "initialize", @model
 
   render: ->
     $(@el).html(@template(task: @model))
     @$(".date-text").timeago()
-    console.log @$(".date-input").data("date-format"), @$(".date-input").data("date")
+    # console.log @$(".date-input").data("date-format"), @$(".date-input").data("date")
     @$(".date-input").datepicker()
     @$(".date-input").on('changeDate', @dateChanged)
-    console.log @$(".friend-select")
+    # console.log @$(".friend-select")
     _.defer =>
       @$(".friend-select").chosen()
 
     # Render events
     events_view = new Tiikt.Views.EventsIndex(collection: @model.events)
-    @$('#activity').prepend(events_view .render().el)
-
+    @$('.activity').prepend(events_view.render().el)
+    console.log events_view
     this  
     
   # DOM events
