@@ -18,7 +18,7 @@
     <div class="controls">
       <select data-placeholder="Choose someone..." class="friend-select" multiple>
         <option value=""></option>
-        <% current_user.get("friends").each (friend) ->: %>
+        <% current_user.friends.each (friend) ->: %>
         <option value="<%= friend.get("id") %>"><%= friend.get("name") %></option>
         <% end %>
       </select>

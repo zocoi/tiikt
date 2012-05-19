@@ -11,5 +11,7 @@ class Tiikt.Models.Task extends Backbone.Model
   parse_attributes: (attributes) ->
     if attributes.events?
       @events = new Tiikt.Collections.Events(attributes.events)
+      @events.map (model) =>
+        model.task = @
       delete attributes.events
 	  

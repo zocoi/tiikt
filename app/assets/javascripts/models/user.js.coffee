@@ -10,6 +10,6 @@ class Tiikt.Models.User extends Backbone.Model
     
   parse_attributes: (attributes) ->
     if attributes.friends?
-      @set "friends", new Tiikt.Collections.Users(attributes.friends)
+      @friends = new Tiikt.Collections.Users(attributes.friends)
       delete attributes.friends
     

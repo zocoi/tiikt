@@ -1,3 +1,8 @@
 <span>Events</span>
 <div class="events"></div>
-<textarea class="comment_input"></textarea>
+<form class="comment-form well">
+  <div>
+    <textarea class="comment-input input-xlarge"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Comment</button>
+</form>

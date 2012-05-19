@@ -9,4 +9,5 @@ class Tiikt.Views.EventsEntry extends Backbone.View
 
   render: ->
     @$el.html(@template(event: @model))
+    console.log @model
     this
