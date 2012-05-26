@@ -38,11 +38,16 @@
 </form>
 
 <ul class="nav nav-tabs">
-  <li class="active"><a href="">Activity</a></li>
-  <li><a href="">People</a></li>
+  <li class="active"><a>Activity</a></li>
+  <li><a>People</a></li>
 </ul>
  
 <div class="tab-content">
-  <div class="activity tab-pane active">...</div>
-  <div class="people tab-pane">...</div>
+  <div class="activity tab-pane active">
+  </div>
+  <div class="people tab-pane">
+  	<% @task.users.each (user) ->: %>
+	    <%= user.name %>
+	  <% end %>
+  </div>
 </div>

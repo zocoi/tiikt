@@ -1,7 +1,8 @@
-<div class="speech-bubble well" style="background: pink;">
-  <div class="avatar">
+<div class="avatar" style="float:left">
+  <img src="<%= @event.user.get("avatar_url") %>"/>
+</div>
 
-  </div>
+<div class="speech-bubble well" style="background: pink; margin-left: 60px;">
   <div class="body">
     <%= @event.get('body') %>
   </div>

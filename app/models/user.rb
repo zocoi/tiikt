@@ -88,6 +88,7 @@ class User < ActiveRecord::Base
   
   def as_json options={}
     super(options).merge({
+      :avatar_url => self.avatar_url
     })
   end
   

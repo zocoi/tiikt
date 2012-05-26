@@ -1,9 +1,11 @@
 class Task < ActiveRecord::Base
   belongs_to :user
-  belongs_to :assignment
   
   has_many :events
   has_many :comment_events
+  
+  has_many :assignments
+  has_many :users, :through => :assignments
   
   validates :description, :presence => true
   
@@ -25,7 +27,8 @@ class Task < ActiveRecord::Base
     super(options).merge({
       :is_completed => self.is_completed,
       :due_at => (self.due_at)?self.due_at.to_date.iso8601 : nil,
-      :events => self.events
+      :events => self.events.limit(10),
+      :users => self.users
     })
   end
 end

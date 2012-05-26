@@ -14,4 +14,10 @@ class Tiikt.Models.Task extends Backbone.Model
       @events.map (model) =>
         model.task = @
       delete attributes.events
+    if attributes.users?
+      @users = new Tiikt.Collections.Users(attributes.users)
+      @users.map (model) =>
+        model.task = @
+      delete attributes.users
+	
 	  
