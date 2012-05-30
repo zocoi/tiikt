@@ -25,10 +25,8 @@ class Tiikt.Views.TasksEntry extends Backbone.View
     $(".entry").removeClass("selected")
     @$el.addClass("selected")
     unless @model.sidebar_view?
-      console.log "new"
       sidebar_view = new Tiikt.Views.TasksSidebar(model: @model)
       @model.sidebar_view = sidebar_view
-    console.log @model.sidebar_view.render()
     $('#sidebar').html(@model.sidebar_view.render().el)
     
   toggleCompletedClicked: (e) ->

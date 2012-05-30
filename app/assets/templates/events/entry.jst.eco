@@ -1,12 +1,15 @@
-<div class="avatar" style="float:left">
+<div class="avatar" style="margin-top:3px;float:left">
   <img src="<%= @event.user.get("avatar_url") %>"/>
 </div>
 
-<div class="speech-bubble well" style="background: pink; margin-left: 60px;">
+<div class="speech-bubble alert" style="min-height:40px;color: #468847;background-color: #DFF0D8; border-color: #D6E9C6; margin-left: 60px;">
+  <a class="close">&times;</a>
   <div class="body">
     <%= @event.get('body') %>
   </div>
-  <a class="close">&times;</a>
+  <div class="datetime" title="<%= @event.get('created_at') %>">
+  </div>
+  
 </div>
 
 

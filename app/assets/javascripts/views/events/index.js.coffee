@@ -22,13 +22,22 @@ class Tiikt.Views.EventsIndex extends Backbone.View
 
   render_event: (event) =>
     entry_view = new Tiikt.Views.EventsEntry(model: event)
-    # console.log @el, @$('.events')
     @$('.events').append(entry_view.render().el)
 
   # DOM events
   formSubmitted: (event) ->
-    event.preventDefault()
-    console.log event
-    comment_event = new Tiikt.Models.CommentEvent()
+    text = @$('.comment-input').val()
+    return false if text.length < 4
+    comment_event = @collection.create({
+      body: text
+      type: "CommentEvent"
+      user_id: current_user.id
+      task_id: @task.id
+      user: current_user.toJSON()
+      task: @task.toJSON()
+    })
+    comment_event.user = current_user
+    comment_event.task = @task
+    @$('.comment-input').val("")
     return false
     

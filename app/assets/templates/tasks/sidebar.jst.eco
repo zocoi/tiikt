@@ -47,7 +47,7 @@
   </div>
   <div class="people tab-pane">
   	<% @task.users.each (user) ->: %>
-	    <%= user.name %>
-	  <% end %>
+      <%= user.name %>
+    <% end %>
   </div>
 </div>

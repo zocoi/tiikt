@@ -1,11 +1,11 @@
 class Tiikt.Models.Event extends Backbone.Model
 
   initialize: (attributes) ->
-    @parse_attributes(attributes)
+    @parse_attributes(attributes) if attributes?
     super attributes
     
   parse: (response) ->
-    @parse_attributes(response)
+    @parse_attributes(response) if response?
     super response
     
   parse_attributes: (attributes) ->

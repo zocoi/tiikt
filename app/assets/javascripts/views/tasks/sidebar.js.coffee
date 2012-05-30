@@ -25,8 +25,11 @@ class Tiikt.Views.TasksSidebar extends Backbone.View
 
     # Render events
     events_view = new Tiikt.Views.EventsIndex(collection: @model.events)
+    events_view.task = @model
     @$('.activity').prepend(events_view.render().el)
-    console.log events_view
+    
+    # Delegate events
+    @delegateEvents(@events)
     this  
     
   # DOM events
