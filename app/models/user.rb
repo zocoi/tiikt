@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :friends, :through => :friendships, :source => :friend, :class_name => 'User'
   
   has_many :events
+  has_many :comment_events
   
   def avatar_url
     if self.fb_uid
@@ -84,6 +85,10 @@ class User < ActiveRecord::Base
         friend.friends << self unless friend.friends.exists?(self)
       end
     end
+  end
+  
+  def is_friend_of(user)
+    self.friends.exists?(user)
   end
   
   def as_json options={}

@@ -26,7 +26,6 @@ class Task < ActiveRecord::Base
   def as_json options={}
     super(options).merge({
       :is_completed => self.is_completed,
-      :due_at => (self.due_at)?self.due_at.to_date.iso8601 : nil,
       :events => self.events.limit(10),
       :users => self.users
     })
