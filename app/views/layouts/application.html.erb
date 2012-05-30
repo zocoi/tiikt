@@ -8,9 +8,9 @@
   <%- # Always force latest IE rendering engine (even in intranet) & Chrome Frame -%>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <%= display_meta_tags :reverse => true, :site => 'Zocoi - Ready To Read',
+  <%= display_meta_tags :reverse => true, :site => 'Tiikt - Get things done with friends',
   :description => 'Tiikt is .', 
-  :keywords => 'comics, book sharing, online comics, manga, online manga, graphical book, social network, free book, free comics, comics network'
+  :keywords => 'Tiikt - Get things done with friends'
    %>
   <meta property="fb:app_id" content="<%= APP_CONFIG['facebook']['app_id'] %>">
 
@@ -34,7 +34,7 @@
   <%= csrf_meta_tag %>
   
   <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' %>
-  <%= javascript_include_tag 'http://www.eyecon.ro/bootstrap-datepicker/js/bootstrap-datepicker.js' %>
+  <%= javascript_include_tag 'https://raw.github.com/eternicode/bootstrap-datepicker/master/js/bootstrap-datepicker.js' %>
   <%= javascript_include_tag 'http://harvesthq.github.com/chosen/chosen/chosen.jquery.js' %>
   <%= javascript_include_tag 'http://timeago.yarp.com/jquery.timeago.js' %>
   <%= javascript_include_tag 'http://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js' %>
