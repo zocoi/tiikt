@@ -15,6 +15,8 @@ Tiikt::Application.routes.draw do
 
   end
   
+  resources :events
+  
   root :to => "main#index"
 
   # The priority is based upon order of creation:
