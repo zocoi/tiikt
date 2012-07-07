@@ -22,7 +22,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <%- # CSS : implied media="all" -%>
-  <%= stylesheet_link_tag 'http://bootswatch.com/simplex/bootstrap.min.css' %>
+  <%= stylesheet_link_tag 'http://bootswatch.com/united/bootstrap.min.css' %>
   <%= stylesheet_link_tag 'http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css' %>
   <%= stylesheet_link_tag 'http://www.eyecon.ro/bootstrap-datepicker/css/datepicker.css' %>
   <%= stylesheet_link_tag 'http://harvesthq.github.com/chosen/chosen/chosen.css' %>
@@ -65,7 +65,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <%= link_to "Tiikt", root_path, :class => "brand", :id => "logo" %>
+        <%= link_to content_tag(:i, nil, :class=>"icon-check icon-white") +" Tiikt", root_path, :class => "brand", :id => "logo" %>
         <div class="nav-collapse">
           <ul class="nav">
             <% unless user_signed_in? %>
@@ -75,7 +75,7 @@
             <% end %>
           </ul>
           <%# form_tag(search_books_path, {:class => "navbar-search pull-left"}) do %>
-            <input type="text" placeholder="Search" name="keyword" id="search" class="span-2 search-query">
+            <!-- <input type="text" placeholder="Search" name="keyword" id="search" class="span-2 search-query"> -->
           <%# end %>
           <% if user_signed_in? %>
           <ul class="nav pull-right">

@@ -14,8 +14,17 @@
   </div>
   
   <div class="control-group">
-    <label class="control-label">Involved</label>
+    <label class="control-label">Giao cho</label>
     <div class="controls">
+      <div class="btn-group">
+        <button class="btn">Action</button>
+        <button class="btn dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <!-- dropdown menu links -->
+        </ul>
+      </div>
       <select data-placeholder="Choose someone..." class="friend-select" multiple>
         <option value=""></option>
         <% current_user.friends.each (friend) ->: %>
@@ -26,9 +35,14 @@
   </div>
   
   <div class="control-group">
-    <label class="control-label">When</label>
+    <label class="control-label">Xong</label>
     <div class="controls">
       <div class="input-append">
+        <div class="btn-group" data-toggle="buttons-checkbox">
+          <button class="btn">hôm nay</button>
+          <button class="btn">càng sớm càng tốt</button>
+          <button class="btn">vào ngày ...</button>
+        </div>
         <span class="date-text" title="<%= @task.get('due_at') %>"></span>
         <a class="btn btn-small date-input" data-date-format="yyyy-mm-dd" data-date="<%= @task.get('due_at') %>"><i class="icon icon-time"></i></a>
       </div>     
@@ -38,16 +52,20 @@
 </form>
 
 <ul class="nav nav-tabs">
-  <li class="active"><a>Activity</a></li>
-  <li><a>People</a></li>
+  <li class="active"><a data-toggle="tab">Activity</a></li>
+  <li><a data-toggle="tab">People</a></li>
 </ul>
  
 <div class="tab-content">
   <div class="activity tab-pane active">
   </div>
   <div class="people tab-pane">
-  	<% @task.users.each (user) ->: %>
-      <%= user.name %>
+    <% if (@task.users.length > 0): %>
+    	<% @task.users.each (user) ->: %>
+        <%= user.name %>
+      <% end %>
+    <% else: %>
+      There is no user assigned to this task.
     <% end %>
   </div>
 </div>

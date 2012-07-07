@@ -13,7 +13,7 @@ first_user = User.create({
   :name => "Hung Dao",
   :password => "123456",
   :fb_uid => 560224923,
-  :fb_access_token => "AAAAALG4w3e8BAJZBZB1LGLYrylZB0wslqls3LkA0vjT4Gfkq3PRukifTMYpidgJskHtqZAXucg8lh5kKrqg3YJZCxWcL8QjsZD"
+  :fb_access_token => ""
 })
 
 # Task

@@ -11,7 +11,6 @@ class Tiikt.Views.TasksSidebar extends Backbone.View
   initialize: ->
     @model.on("change:description", @render, @)
     @model.on("change:due_at", @render, @)
-    # console.log "initialize", @model
 
   render: ->
     $(@el).html(@template(task: @model))
@@ -28,6 +27,10 @@ class Tiikt.Views.TasksSidebar extends Backbone.View
     events_view.task = @model
     @$('.activity').prepend(events_view.render().el)
     
+    # Tabs
+    @$('a[data-toggle="tab"]').click ->
+      $(this).tab('show')
+    
     # Delegate events
     @delegateEvents(@events)
     this  
@@ -38,7 +41,6 @@ class Tiikt.Views.TasksSidebar extends Backbone.View
     @$('.description-textarea').show().focus()
   
   descriptionTextareaEdited: ->
-    console.log "descriptionTextareaEdited"
     @model.set {
       description: @$('.description-textarea').val()
     }

@@ -11,6 +11,8 @@ class Task < ActiveRecord::Base
   
   attr_accessor :is_completed
   
+  after_create :create_assignement
+  
   def is_completed
     self.completed_at != nil
   end
@@ -29,5 +31,9 @@ class Task < ActiveRecord::Base
       :events => self.events.limit(10),
       :users => self.users
     })
+  end
+  
+  private
+  def create_assignement
   end
 end

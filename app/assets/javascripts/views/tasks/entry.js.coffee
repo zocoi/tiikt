@@ -28,6 +28,7 @@ class Tiikt.Views.TasksEntry extends Backbone.View
       sidebar_view = new Tiikt.Views.TasksSidebar(model: @model)
       @model.sidebar_view = sidebar_view
     $('#sidebar').html(@model.sidebar_view.render().el)
+    $('#sidebar-heading').show()
     
   toggleCompletedClicked: (e) ->
     @model.set("is_completed",  !@model.get("is_completed") )
